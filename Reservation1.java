@@ -31,7 +31,17 @@ String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리
 		 });
 		 JButton b2=new JButton("예약하기");
 		 b2.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) 
+					// String str = "";
+					int count = 0;
+					for(int seat=0; seat<place.length;seat++) {
+						if(place[seat].isSelected()) {
+							count++;
+							if(count >1) {
+								JOptionPane.showMessageDialog(b2 , "1개 이상 선택하실 수 없습니다","에러",JOptionPane.ERROR_MESSAGE);
+							}
+						}
+					}		
 					setVisible(false);
 					new LoginNextMain();	
 			}
