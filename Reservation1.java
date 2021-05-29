@@ -3,7 +3,10 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.*;
+import java.swing.JLabel;
+import javax,swing,JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -12,6 +15,7 @@ import javax.swing.JPanel;
 public class Reservation1 extends JFrame{
 JCheckBox[] place=new JCheckBox[14];
 String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리","6번자리","7번자리","8번자리","9번자리","10번자리","11번자리","12번자리","13번자리","14번자리"};
+JCheckBox did2 = null;
 	Reservation1(){
 		 setTitle("예약화면");
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +35,7 @@ String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리
 		 });
 		 JButton b2=new JButton("예약하기");
 		 b2.addActionListener(new ActionListener(){
+			 @SuppressWarnings("unlikely-arg-type")
 				public void actionPerformed(ActionEvent e) 
 					// String str = "";
 					int count = 0;
