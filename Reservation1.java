@@ -41,8 +41,55 @@ String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리
 								JOptionPane.showMessageDialog(b2 , "1개 이상 선택하실 수 없습니다","에러",JOptionPane.ERROR_MESSAGE);
 							}
 						}
-					}		
-					setVisible(false);
+						String id;
+						id = tf.getText();
+						Connection con = null;  // DB연결된 세션을 담은 객체
+						PreparedStatement pstm =null; // SQL 문을 나타내는 객체
+						PreparedStatement spstm = null; 
+						ResultSet Result =null; // 쿼리문을 날린것에 반환값 담는 객체
+						String sql = "insert into 좌석정보 values(?)";
+						String select = "select 좌석 from 좌석정보";
+						String user = "minhyung";
+						String pw = "1234";
+						String url = "jdbc:oracle:thin:@localhost:1521:xe";
+						String did = null;
+					
+					try {
+						Class.forName("oracle.jdbc.driver.OracleDriver");
+						con = DriverManager.getConnection(url, user , pw);
+						spstm = con.prepareStatement(select);
+						Result = spstm.executeQuery();
+						while(Result.next()) {
+							did= Result.getString("좌석");
+							if(did.equals(place[seat])) {
+								JOptionPane.showMessageDialog(null, "이미 예약된 좌석입니다","에러",JOptionPane.ERROR_MESSAGE);
+								break;
+							}
+						}
+					}
+					catch(SQLException message) {
+						System.out.println("SQL 오류");
+						message.printStackTrace();
+					}
+					catch(Exception message_1) {
+						System.out.println("Error");
+					}
+					finally {
+						if(!did.equals(place[seat])) {
+							did2 = place[seat];
+							JOptionPane.showMessageDialog(null, "예약 가능한 좌석입니다");
+						}
+						try {
+							if(Result != null) {Result.close();}
+							if(pstm != null) {pstm.close();}
+							if(con != null) {con.close();}
+												
+					}
+						catch(Exception ne) {
+							throw new RuntimeException(ne.getMessage());
+		}
+	}
+}			setVisible(false);
 					new LoginNextMain();	
 			}
 		 });
