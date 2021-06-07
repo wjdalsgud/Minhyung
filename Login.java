@@ -68,7 +68,8 @@ public class Login extends JFrame {
 		Background.add(ID_btn);
 		ID_btn.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {\
+				frame.setVisible(false);
 				new IdSearch();
 				
 			}
@@ -80,6 +81,7 @@ public class Login extends JFrame {
 		Background.add(PW_btn);
 		PW_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				new PwSearch();
 			}
 		});
@@ -90,6 +92,7 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				new NewID();
 				
 			}
@@ -126,6 +129,7 @@ public class Login extends JFrame {
 		    		dpw= rs.getString("PW");
 		    		if(did.equals(id)&&dpw.equals(pwd)) {
 		    			JOptionPane.showMessageDialog(null,"Login Success");
+					frame.setVisible(false);
 						new LoginNextMain();	
 		    			break;
 		    		}
@@ -162,6 +166,7 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				new Manager();
 				
 			}
@@ -175,6 +180,7 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				System.exit(0);
 				
 			}
