@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class ManagerMain extends JFrame{
 ManagerMain(){
-	setTitle("관리자 로그인 화면");
+	setTitle("관리자 메인 화면");
 	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 Container c=getContentPane();
 	 JPanel q1= new JPanel();
@@ -19,24 +19,28 @@ ManagerMain(){
 	 JButton jb=new JButton("회원 확인");
 		jb.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				new Manage1();
 			}
 		});
 	 JButton jb1=new JButton("회원 삭제");
 		jb1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
+				setVisible(false);
+				new Manage2();
 			}
 		});
 	 JButton jb2=new JButton("회원 수정");
 		jb2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
+				setVisible(false);
+				new Manage3();
 			}
 		});
 	 JButton jb3=new JButton("좌석 관리");
 		jb3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				
 			}
 		});
