@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -76,8 +75,8 @@ public class Login extends JFrame {
 		
 		});
 		
-		JButton PW_btn = new JButton("비밀번호 찾기");
-		PW_btn.setBounds(301, 192, 105, 67);
+		JButton PW_btn = new JButton("비밀번호찾기");
+		PW_btn.setBounds(301, 192, 128, 67);
 		Background.add(PW_btn);
 		PW_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -191,23 +190,4 @@ public class Login extends JFrame {
 		
 	}
 
-}
-class ImagePanel extends JPanel {
-	private Image img;
-	
-	public ImagePanel(Image img) {
-		this.img = img;
-		setSize(new Dimension(img.getWidth(null),img.getHeight(null)));
-		setPreferredSize(new Dimension(img.getWidth(null),img.getHeight(null)));
-		setLayout(null);
-	}
-	public  int getWidth() {
-		return img.getWidth(null);
-	}
-	public int getHeight() {
-		return img.getHeight(null);
-	}
-	public void paintComponent(Graphics g) {
-		g.drawImage(img,0,0,null);
-	}
 }
