@@ -73,6 +73,7 @@ public class IdSearch extends JFrame{
 		 abcd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					frame.setVisible(false);
+					frame.setVisible(false);
 					new Login();	
 			}
 		 });
