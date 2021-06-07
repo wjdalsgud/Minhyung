@@ -3,20 +3,27 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.*;
-import java.swing.JLabel;
-import javax,swing,JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Reservation1 extends JFrame{
-JCheckBox[] place=new JCheckBox[14];
-String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리","6번자리","7번자리","8번자리","9번자리","10번자리","11번자리","12번자리","13번자리","14번자리"};
+JCheckBox[] place=new JCheckBox[100];
+String[] name = new String [100];
+
 JCheckBox did2 = null;
-	Reservation1(){
+	Reservation1() {
+		for(int n=0; n<100; n++) {
+			name[n] = (n+1)+"번째 자리";
+		}
+		JTextField tf = new JTextField(10);
 		 setTitle("예약화면");
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 Container c=getContentPane();
@@ -35,8 +42,9 @@ JCheckBox did2 = null;
 		 });
 		 JButton b2=new JButton("예약하기");
 		 b2.addActionListener(new ActionListener(){
-			 @SuppressWarnings("unlikely-arg-type")
-				public void actionPerformed(ActionEvent e) 
+			 
+				@SuppressWarnings("unlikely-arg-type")
+				public void actionPerformed(ActionEvent e) {
 					// String str = "";
 					int count = 0;
 					for(int seat=0; seat<place.length;seat++) {
@@ -94,9 +102,11 @@ JCheckBox did2 = null;
 							throw new RuntimeException(ne.getMessage());
 		}
 	}
-}			setVisible(false);
+}
+					setVisible(false);
 					new LoginNextMain();	
-			}
+					}
+			
 		 });
 		 JPanel a= new JPanel();
 		 a.setLayout(new FlowLayout(FlowLayout.CENTER,70,40));
