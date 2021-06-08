@@ -1,5 +1,9 @@
-import java.awt.Container;
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -7,83 +11,112 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Login extends JFrame{
-	
-	
- Login(){
-
-	 setTitle("로그인화면");
-	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	 Container c=getContentPane();
-	 JPanel q1= new JPanel();
-	 JPanel q2=new JPanel();
-	 	JPanel q3=new JPanel();
-	 	JPanel q4= new JPanel();
-	 	JPanel q5= new JPanel();
-	 	JPanel im= new JPanel();
-	 	im.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	q1.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	q2.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	q3.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	q4.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	q5.setLayout(new FlowLayout(FlowLayout.CENTER));
-	 	ImageIcon im1= new ImageIcon("./image/12.PNG");
-	 	JLabel im2= new JLabel(im1);
-	 	im.add(im2);
-	 JLabel j=new JLabel("PC방 좌석 예약 프로그램");
-	 q1.add(j);
-	 JLabel j1=new JLabel("  아 이 디 ");
-	 q2.add(j1);
-	 JTextField jt= new JTextField(18);
-	 q2.add(jt);
-	 q3.add(new JLabel(" 비밀번호"));
-	 JTextField jt1=new JTextField(18);
-	 q3.add(jt1);
-	 JButton b=new JButton("회원가입");
-	 b.addActionListener(new ActionListener(){
+public class Login extends JFrame {
+	static String lid=" ";
+	static String lpw=" ";
+	static int pctotal=0;
+	Login() {
+		JFrame frame = new JFrame();
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Wallpaper.jpg").getImage());
+		frame.getContentPane().add(Background,BorderLayout.NORTH);
+		frame.setTitle("로그인");
+		
+		Background.setLayout(null);
+		
+		
+		JLabel MainLabel = new JLabel("PC Reservation ManageMent Program");
+		MainLabel.setLayout(null);
+		MainLabel.setBounds(247, 10, 240, 45);
+		MainLabel.setFont(new Font("HY수평선M",Font.BOLD,13));
+		MainLabel.setForeground(Color.white);
+		Background.add(MainLabel);
+		
+		JLabel ID = new JLabel(" ID :");
+		ID.setLayout(null);
+		ID.setBounds(275, 79, 105, 36);
+		ID.setForeground(Color.BLACK);
+		Background.add(ID);
+		
+		JTextField ID_textField = new JTextField();
+		ID_textField.setBounds(307, 87, 122, 21);
+		Background.add(ID_textField);
+		ID_textField.setColumns(10);
+		
+		JLabel PW= new JLabel("PassWord :");
+		PW.setLayout(null);
+		PW.setBounds(233, 115, 105, 26);
+		PW.setForeground(Color.BLACK);
+		Background.add(PW);
+		
+		
+		JPasswordField txtPass = new JPasswordField();
+		txtPass.setLayout(null);
+		txtPass.setBounds(307, 118, 122, 21);
+		Background.add(txtPass);
+		txtPass.setColumns(10);
+		
+		JButton ID_btn = new JButton("아이디 찾기");
+		ID_btn.setBounds(156, 192, 105, 67);
+		Background.add(ID_btn);
+		ID_btn.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				new NewID();	
-		}
-	 });
-	 JButton b31=new JButton("아이디 찾기");
-	 b31.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				frame.setVisible(false);
 				new IdSearch();
-		}
-	 });
-	 q4.add(b31);
-	 JButton b32=new JButton("비밀번호 찾기");
-	 b32.addActionListener(new ActionListener(){
+				
+			}
+		
+		});
+		
+		JButton PW_btn = new JButton("비밀번호찾기");
+		PW_btn.setBounds(301, 192, 128, 67);
+		Background.add(PW_btn);
+		PW_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new PwSearch();	
-		}
-	 });
-	 q4.add(b32);
-	 q5.add(b);
-	 JButton b1=new JButton("로그인");
-	 b1.addActionListener(new ActionListener(){
+				frame.setVisible(false);
+				new PwSearch();
+			}
+		});
+		JButton Signup_btn= new JButton("회원가입");
+		Signup_btn.setBounds(443, 192, 105, 67);
+		Background.add(Signup_btn);
+		Signup_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				new NewID();
+				
+			}
+			
+		});
+		
+		JButton Login_btn= new JButton("로그인");
+		Login_btn.setBounds(156, 312, 105, 67);
+		Background.add(Login_btn);
+		Login_btn.addActionListener(new ActionListener() {
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				String id,pwd;
-				id=jt.getText();
-				pwd=jt1.getText();
+				id=ID_textField.getText();
+				pwd=txtPass.getText();
 				Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 			    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
-			    String sql="insert into 회원 values(?,?,?)";
 			    String select="select ID,PW from 회원";
+			    String select1="select*from 피시방 where pc=1";
 				String user = "sys as sysdba"; 
 		        String pw = "Gksmf1238";
 		        String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
@@ -93,13 +126,21 @@ public class Login extends JFrame{
 		        Class.forName("oracle.jdbc.driver.OracleDriver");      
 		        conn = DriverManager.getConnection(url, user, pw);	       
 		    	spstm=conn.prepareStatement(select);
+		    	pstm=conn.prepareStatement(select1);
 		    	rs=spstm.executeQuery();
 		    	while(rs.next()) {
 		    		did= rs.getString("ID");
 		    		dpw= rs.getString("PW");
 		    		if(did.equals(id)&&dpw.equals(pwd)) {
-		    			System.out.println("로그인에 성공했습니다");
-						setVisible(false);
+		    			lid=id;
+		    			lpw=pwd;
+		                pstm = conn.prepareStatement(select1);
+		                rs = pstm.executeQuery();
+		                while(rs.next()){
+		            	pctotal=rs.getInt("total"); 		    			
+		                }
+		    			JOptionPane.showMessageDialog(null,"Login Success");
+					frame.setVisible(false);
 						new LoginNextMain();	
 		    			break;
 		    		}
@@ -122,40 +163,48 @@ public class Login extends JFrame{
 		            }catch(Exception me){
 		                throw new RuntimeException(me.getMessage());
 		            }
-		            
-		        }
-		}
-	 });
-	 q5.add(b1);
-	 JButton b2=new JButton("종료");
-	 b2.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-			System.exit(0);
-		}
-	 });
 
-	 JButton b3=new JButton("관리");
-	 b3.addActionListener(new ActionListener(){
+		        }
+				
+			}
+			
+		});
+		
+		JButton Manager_btn= new JButton("관리");
+		Manager_btn.setBounds(301, 312, 105, 67);
+		Background.add(Manager_btn);
+		Manager_btn.addActionListener(new ActionListener() {
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				frame.setVisible(false);
 				new Manager();
 				
-		}
-	 });
-	 
-	 q5.add(b2);
-	 q5.add(b3);
-	 c.setLayout(new FlowLayout());
-	 c.add(q1);
-	 c.add(im);
-	 c.add(q2);
-	 c.add(q3);
-	 c.add(q4);
-	 c.add(q5);
-	 setSize(300,400);
-	 setVisible(true);
- }
-	
-	
+			}
+			
+		});
+		
+		JButton Exit_btn = new JButton("종료");
+		Exit_btn.setBounds(443, 312, 105, 67);
+		Background.add(Exit_btn);
+		Exit_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				System.exit(0);
+				
+			}
+			
+		});
+		
+		
+		
+		frame.setSize(800,480);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
 }
