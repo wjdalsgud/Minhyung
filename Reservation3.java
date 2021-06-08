@@ -6,21 +6,21 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Reservation3 extends JFrame{
-	JCheckBox[] place=new JCheckBox[14];
-	String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리","6번자리","7번자리","8번자리","9번자리","10번자리","11번자리","12번자리","13번자리","14번자리"};
 		Reservation3(){
 			 setTitle("예약확인화면");
 			 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			 Container c=getContentPane();
 			 c.setLayout(new FlowLayout(FlowLayout.LEFT,5,40));
-			 for(int i=0;i<place.length;i++) {
-				 place[i]=new JCheckBox(name[i]);
-				 place[i].setBorderPainted(true);
-				 c.add(place[i]);
-			 }
+			 JLabel jl=new JLabel();
+if(LoginNextMain.dseat==0) {
+	  jl=new JLabel("현재 예약하신 좌석이 없습니다.");
+}else {
+	  jl=new JLabel("현재 예약된 좌석은 "+LoginNextMain.dseat+"번입니다.");
+    }
 			 JButton b1=new JButton("뒤로가기");
 			 b1.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
@@ -30,10 +30,11 @@ public class Reservation3 extends JFrame{
 			 });
 			 JPanel a= new JPanel();
 			 a.setLayout(new FlowLayout(FlowLayout.CENTER,140,40));
+			 a.add(jl);
 			 a.add(b1);
 			 c.add(a);
 
 			setVisible(true);
-			setSize(400,400);
+			setSize(800,400);
 		}
 }
