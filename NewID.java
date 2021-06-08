@@ -105,6 +105,7 @@ NewID(){
 	 jb2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);	
+				new Login();
 		}
 	 });
     JButton jb3=new JButton("회원가입");
@@ -117,9 +118,11 @@ NewID(){
 			phone=jf5.getText();
 			Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 		    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+		    PreparedStatement pstm1 = null;  // SQL 문을 나타내는 객체
 		    PreparedStatement spstm=null;
 		    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 		    String sql="insert into 회원 values(?,?,?)";
+		    String sql1="insert into 예약좌석 values(?,?,?)";
 		    String select="select ID from 회원";
 			String user = "sys as sysdba"; 
 		    String pw = "Gksmf1238";
@@ -143,9 +146,15 @@ NewID(){
 		    	pstm.setString(1, id); 
 		    	pstm.setString(2, pwd); 
 		    	pstm.setString(3, phone);
+		    	pstm1= conn.prepareStatement(sql1);
+		    	pstm1.setString(1, id); 
+		    	pstm1.setInt(2, 1); 
+		    	pstm1.setInt(3, 0);
 		    	pstm.executeUpdate();
+		    	pstm1.executeUpdate();
 		    	JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 				setVisible(false);	
+				new Login();
 			}else {
 				JOptionPane.showMessageDialog(null, "ID중복확인을 완료한 아이디로 입력해주세요","Message",JOptionPane.ERROR_MESSAGE);
 			}
