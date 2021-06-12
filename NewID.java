@@ -1,5 +1,7 @@
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -8,49 +10,62 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 public class NewID extends JFrame{
-
 String did1=null;
-NewID(){
-	setTitle("회원가입");
-	Container c= getContentPane();
-	JPanel jp= new JPanel();
-	JPanel jp1= new JPanel();
-	JPanel jp2= new JPanel();
-	JPanel jp3= new JPanel();
-	JPanel jp12= new JPanel();
-	JPanel jp132= new JPanel();
-	JLabel a= new JLabel("좌석 예약 회원가입");
-	JTextField k123= new JTextField("");
-	jp.setLayout(new FlowLayout());
-	jp1.setLayout(new FlowLayout());
-	jp2.setLayout(new FlowLayout());
-	jp3.setLayout(new FlowLayout());
-	JLabel a1= new JLabel("  아 이 디");
-	JTextField jf= new JTextField(10);
-	JButton jb= new JButton("아이디 중복확인");
-	jb.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent e) {
+NewID(){ 
+	
+	JFrame frame = new JFrame();
 
-		    String id;
-			id=jf.getText();
+	ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Blue.jpg").getImage());
+	frame.getContentPane().add(Background,BorderLayout.NORTH);
+	frame.setTitle("회원가입");
+	
+	Background.setLayout(null);
+	
+	JLabel MainLabel = new JLabel("PC방 좌석 예약 회원가입");
+	MainLabel.setLayout(null);
+	MainLabel.setBounds(66, 10, 173, 27);
+	Background.add(MainLabel);
+	
+	JLabel NEW_ID = new JLabel("아이디");
+	NEW_ID.setLayout(null);
+	NEW_ID.setBounds(52, 47, 83, 27);
+	Background.add(NEW_ID);
+	
+	JTextField ID_TXT = new JTextField();
+	ID_TXT.setBounds(93, 47, 96, 21);
+	Background.add(ID_TXT);
+	ID_TXT.setColumns(10);
+	
+	JButton ID_BTN = new JButton("아이디 중복확인");
+	ID_BTN.setLayout(null);
+	ID_BTN.setBounds(78, 84, 133, 42);
+	Background.add(ID_BTN);
+	ID_BTN.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			String id;
+			id=ID_TXT.getText();
 			Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 		    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
 		    PreparedStatement spstm=null;
 		    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 		    String sql="insert into 회원 values(?,?,?)";
 		    String select="select ID from 회원";
-			String user = "sys as sysdba"; 
-		    String pw = "Gksmf1238";
-		    String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
-		    String did = null;
+			String user = "minhyung"; 
+		    String pw = "1234";
+		    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
+		    String did = "";
 		    try {
 		    Class.forName("oracle.jdbc.driver.OracleDriver");      
 		    conn = DriverManager.getConnection(url, user, pw);	       
@@ -84,46 +99,72 @@ NewID(){
 		        }
 		        
 		    }
-	}
-});
-			
-	jp.add(a);
-	jp1.add(a1);
-	jp1.add(jf);
-	jp12.add(jb);
-	JLabel a2= new JLabel(" 비밀번호");
-	JTextField jf1= new JTextField(10);
-	jp2.add(a2);
-	jp2.add(jf1);
-
-	JLabel a5= new JLabel(" 전화번호");
-	JTextField jf5= new JTextField(10);
-	jp132.add(a5);
-	jp132.add(jf5);
-	
-	JButton jb2= new JButton("뒤로가기");
-	 jb2.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);	
 		}
-	 });
-    JButton jb3=new JButton("회원가입");
-    jb3.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent e) {
+		
+	});
+	
+	JLabel pass = new JLabel("비밀번호");
+	pass.setLayout(null);
+	pass.setBounds(41, 139, 83, 15);
+	Background.add(pass);
+	
+	JLabel phone = new JLabel("전화번호");
+	phone.setLayout(null);
+	phone.setBounds(41, 173, 67, 15);
+	Background.add(phone);
+	
+	JPasswordField  pass_txt = new JPasswordField();
+	pass_txt.setLayout(null);
+	pass_txt.setBounds(93, 136, 96, 21);
+	Background.add(pass_txt);
+	pass_txt.setColumns(10);
+	
+	JTextField phone_txt = new JTextField();
+	phone_txt.setLayout(null);
+	phone_txt.setBounds(93, 167, 96, 21);
+	Background.add(phone_txt);
+	phone_txt.setColumns(10);
+	
+	JButton Back_btn = new JButton("뒤로가기");
+	 Back_btn.setLayout(null);
+	 Back_btn.setBounds(12, 210, 112, 43);
+	 Background.add(Back_btn);
+	 Back_btn.addActionListener(new ActionListener() {
 
-		    String id,pwd,phone;
-			id=jf.getText();
-			pwd=jf1.getText();
-			phone=jf5.getText();
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			frame.setVisible(false);
+			new Login();
+			
+		}
+		 
+	 });
+	 
+	 
+	JButton Sing_up =new JButton("회원가입");
+	Sing_up.setLayout(null);
+	Sing_up.setBounds(144, 210, 112, 43);
+	Background.add(Sing_up);
+	Sing_up.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			String id,pwd,phone;
+			id=ID_TXT.getText();
+			pwd=pass_txt.getText();
+			phone=phone_txt.getText();
 			Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 		    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+		    PreparedStatement pstm1 = null;  // SQL 문을 나타내는 객체
 		    PreparedStatement spstm=null;
 		    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 		    String sql="insert into 회원 values(?,?,?)";
+		    String sql1="insert into 예약좌석 values(?,?,?)";
 		    String select="select ID from 회원";
-			String user = "sys as sysdba"; 
-		    String pw = "Gksmf1238";
-		    String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
+			String user = "minhyung"; 
+		    String pw = "1234";
+		    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 		    String did = null;
 		    try {
 		    Class.forName("oracle.jdbc.driver.OracleDriver");      
@@ -143,9 +184,15 @@ NewID(){
 		    	pstm.setString(1, id); 
 		    	pstm.setString(2, pwd); 
 		    	pstm.setString(3, phone);
+		    	pstm1= conn.prepareStatement(sql1);
+		    	pstm1.setString(1, id); 
+		    	pstm1.setInt(2, 1); 
+		    	pstm1.setInt(3, 0);
 		    	pstm.executeUpdate();
+		    	pstm1.executeUpdate();
 		    	JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 				setVisible(false);	
+				new Login();
 			}else {
 				JOptionPane.showMessageDialog(null, "ID중복확인을 완료한 아이디로 입력해주세요","Message",JOptionPane.ERROR_MESSAGE);
 			}
@@ -166,21 +213,38 @@ NewID(){
 		        }
 		        
 		    }
-	}
- });
-
-
-    jp3.add(jb2);
-    jp3.add(jb3);
-    c.setLayout(new FlowLayout());
-    c.add(jp);
-    c.add(jp1);
-    c.add(jp12);
-    c.add(jp2);
-    c.add(jp132);
-    c.add(jp3);
-    setVisible(true);
-    setSize(300,300);
-}
+		}
+		
+	});
 	
+	
+	
+	
+	
+	
+	
+
+	frame.setSize(300,300);
+	frame.setVisible(true);
+	frame.setResizable(false);
+	frame.setLocationRelativeTo(null);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	}
 }
