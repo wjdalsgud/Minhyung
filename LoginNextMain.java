@@ -247,6 +247,7 @@ LoginNextMain(){
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			frame.setVisible(false);
 			System.exit(0);
 			
 		}
