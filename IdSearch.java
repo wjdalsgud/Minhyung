@@ -1,6 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-
+import java.awt.Cursor;
 import java.awt.Dimension;
 
 import java.awt.Font;
@@ -68,6 +68,9 @@ public class IdSearch extends JFrame{
 		abc.setColumns(10);
 		
 		JButton abcd= new JButton("뒤로가기");
+		abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd.setBackground(Color.LIGHT_GRAY);
+		abcd.setForeground(Color.BLUE);
 		abcd.setBounds(12, 212, 113, 41);
 		Background.add(abcd);
 		 abcd.addActionListener(new ActionListener(){
@@ -77,6 +80,9 @@ public class IdSearch extends JFrame{
 			}
 		 });
 		JButton abcd1=new JButton("아이디 검색");
+		abcd1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd1.setBackground(Color.LIGHT_GRAY);
+		abcd1.setForeground(Color.BLUE);
 		abcd1.setBounds(140, 212, 113, 41);
 		Background.add(abcd1);
 		abcd1.addActionListener(new ActionListener(){
