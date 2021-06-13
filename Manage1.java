@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -25,9 +27,9 @@ public class Manage1 extends JFrame{
     ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
     String sql="insert into 회원 values(?,?,?)";
     String select="select ID from 회원";
-	String user = "sys as sysdba"; 
-    String pw1 = "Gksmf1238";
-    String url = "jdbc:oracle:thin:@localhost:1521:orcl";	  
+	String user = "minhyung"; 
+    String pw1 = "1234";
+    String url = "jdbc:oracle:thin:@localhost:1521:xe";	  
     String result[] = new String[1000];
     String result1="";
     int i=0;
@@ -74,6 +76,9 @@ public class Manage1 extends JFrame{
 		c=getContentPane();
 			
 		JButton abcd= new JButton("뒤로가기");
+		abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd.setBackground(Color.LIGHT_GRAY);
+		abcd.setForeground(Color.BLUE);
 		 abcd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
