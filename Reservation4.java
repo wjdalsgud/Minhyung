@@ -1,39 +1,99 @@
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Reservation4 extends JFrame{
-	JCheckBox[] place=new JCheckBox[14];
-	String[] name = {"1¹øÀÚ¸®","2¹øÀÚ¸®","3¹øÀÚ¸®","4¹øÀÚ¸®","5¹øÀÚ¸®","6¹øÀÚ¸®","7¹øÀÚ¸®","8¹øÀÚ¸®","9¹øÀÚ¸®","10¹øÀÚ¸®","11¹øÀÚ¸®","12¹øÀÚ¸®","13¹øÀÚ¸®","14¹øÀÚ¸®"};
-		Reservation4(){
-			 setTitle("ÁÂ¼® ÇöÈ² È­¸é");
-			 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			 Container c=getContentPane();
-			 c.setLayout(new FlowLayout(FlowLayout.LEFT,5,40));
-			 for(int i=0;i<place.length;i++) {
-				 place[i]=new JCheckBox(name[i]);
-				 place[i].setBorderPainted(true);
-				 c.add(place[i]);
-			 }
-			 JButton b1=new JButton("µÚ·Î°¡±â");
-			 b1.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
-						new LoginNextMain();	
-				}
-			 });
-			 JPanel a= new JPanel();
-			 a.setLayout(new FlowLayout(FlowLayout.CENTER,140,40));
-			 a.add(b1);
-			 c.add(a);
+JCheckBox[] place=new JCheckBox[100];
+String[] name = new String [100];
+JCheckBox did2 = null;
+	Reservation4() {
+		Connection conn5 = null; // DBì—°ê²°ëœ ìƒíƒœ(ì„¸ì…˜)ì„ ë‹´ì€ ê°ì²´
+	    PreparedStatement pstm5 = null;  // SQL ë¬¸ì„ ë‚˜íƒ€ë‚´ëŠ” ê°ì²´
+	    ResultSet rs5 = null;  // ì¿¼ë¦¬ë¬¸ì„ ë‚ ë¦°ê²ƒì— ëŒ€í•œ ë°˜í™˜ê°’ì„ ë‹´ì„ ê°ì²´
+	    String select5="select*from í”¼ì‹œë°©ì¢Œì„";
+		String user = "minhyung"; 
+        String pw = "1234";
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
+        String did=null;
+        int dpc=0;
+		try {
+	        Class.forName("oracle.jdbc.driver.OracleDriver");      
+	        conn5 = DriverManager.getConnection(url, user, pw);	       
 
-			setVisible(true);
-			setSize(400,400);
+		for(int n=0; n<100; n++) {
+			name[n] = (n+1)+"ë²ˆì§¸ ìë¦¬";
 		}
+		 setTitle("ì˜ˆì•½í™”ë©´");
+		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 Container c=getContentPane();
+		 c.setLayout(new FlowLayout(FlowLayout.LEFT,5,40));
+		 ButtonGroup bg=new ButtonGroup();
+		 pstm5=conn5.prepareStatement(select5);
+	    	rs5=pstm5.executeQuery();
+	    	int i=0;
+		 while(rs5.next()) {
+			 String id5 = rs5.getString("PC");
+             int pw5 = rs5.getInt("SEAT");
+             int seat5 = rs5.getInt("ì˜ˆì•½ìœ ë¬´");
+			 place[i]=new JCheckBox(name[i]);
+			 place[i].setBorderPainted(true);
+			 if(seat5==1) {
+				 place[i].setEnabled(false);
+			 }else {
+				 place[i].setEnabled(true);
+			 }
+			 bg.add(place[i]);
+			 c.add(place[i]);
+			 i++;
+		 }
+		 JButton b1=new JButton("ë’¤ë¡œê°€ê¸°");
+		 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		 b1.setBackground(Color.LIGHT_GRAY);
+		 b1.setForeground(Color.BLUE);
+		 b1.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+					new LoginNextMain();	
+			}
+		 });
+
+
+		 JPanel a= new JPanel();
+		 a.setLayout(new FlowLayout(FlowLayout.CENTER,70,40));
+		 a.add(b1);
+		 c.add(a);
+
+		setVisible(true);
+		setSize(2400,2400);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		 finally{
+	            // DB ì—°ê²°ì„ ì¢…ë£Œí•œë‹¤.
+	            try{
+	                if ( rs5 != null ){rs5.close();}   
+	                if ( pstm5 != null ){pstm5.close();}   
+	                if ( conn5 != null ){conn5.close(); }
+	            }catch(Exception me){
+	                throw new RuntimeException(me.getMessage());
+	            }	        
+	        }
+	}
 }
