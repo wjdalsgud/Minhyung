@@ -1,39 +1,72 @@
+iimport java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Reservation3 extends JFrame{
-	JCheckBox[] place=new JCheckBox[14];
-	String[] name = {"1번자리","2번자리","3번자리","4번자리","5번자리","6번자리","7번자리","8번자리","9번자리","10번자리","11번자리","12번자리","13번자리","14번자리"};
-		Reservation3(){
-			 setTitle("예약확인화면");
-			 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			 Container c=getContentPane();
-			 c.setLayout(new FlowLayout(FlowLayout.LEFT,5,40));
-			 for(int i=0;i<place.length;i++) {
-				 place[i]=new JCheckBox(name[i]);
-				 place[i].setBorderPainted(true);
-				 c.add(place[i]);
-			 }
-			 JButton b1=new JButton("뒤로가기");
-			 b1.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
-						new LoginNextMain();	
-				}
-			 });
-			 JPanel a= new JPanel();
-			 a.setLayout(new FlowLayout(FlowLayout.CENTER,140,40));
-			 a.add(b1);
-			 c.add(a);
+	Reservation3(){
+		JFrame frame = new JFrame();
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Mountain.jpg").getImage());
+		frame.getContentPane().add(Background,BorderLayout.NORTH);
+		frame.setTitle("예약확인화면");
+		
+		Background.setLayout(null);
+		
+		JLabel j1 = new JLabel();
+		
+		if(LoginNextMain.dseat==0) {
+			  j1=new JLabel("현재 예약하신 좌석이 없습니다.");
+		}else {
+			  j1=new JLabel("현재 예약된 좌석은 "+LoginNextMain.dseat+"번입니다.");
+		    }
+		j1.setFont(new Font("HT수평선",Font.BOLD,13));
+		j1.setForeground(Color.WHITE);
+		j1.setBounds(102, 138, 214, 43);
+		Background.add(j1);
+		
+		JButton btnNewButton = new JButton("뒤로 가기");
+		btnNewButton.setBounds(284, 131, 111, 57);
+		Background.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
 
-			setVisible(true);
-			setSize(400,400);
-		}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				new LoginNextMain();
+				
+			}
+			
+		});
+		
+		
+		
+		frame.setSize(800, 400);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 }
