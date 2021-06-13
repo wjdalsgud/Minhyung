@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,7 +23,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Login extends JFrame {
-	
+	static String lid=" ";
+	static String lpw=" ";
+	static int pctotal=0;
 	Login() {
 		JFrame frame = new JFrame();
 		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Wallpaper.jpg").getImage());
@@ -34,8 +37,8 @@ public class Login extends JFrame {
 		
 		JLabel MainLabel = new JLabel("PC Reservation ManageMent Program");
 		MainLabel.setLayout(null);
-		MainLabel.setBounds(247, 10, 240, 45);
-		MainLabel.setFont(new Font("HY수평선M",Font.BOLD,13));
+		MainLabel.setBounds(247, 10, 301, 45);
+		MainLabel.setFont(new Font("HY수평선M",Font.BOLD,15));
 		MainLabel.setForeground(Color.white);
 		Background.add(MainLabel);
 		
@@ -64,11 +67,14 @@ public class Login extends JFrame {
 		txtPass.setColumns(10);
 		
 		JButton ID_btn = new JButton("아이디 찾기");
+		ID_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		ID_btn.setBackground(Color.cyan);
+		ID_btn.setForeground(Color.MAGENTA);
 		ID_btn.setBounds(156, 192, 105, 67);
 		Background.add(ID_btn);
 		ID_btn.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {\
+			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				new IdSearch();
 				
@@ -77,6 +83,9 @@ public class Login extends JFrame {
 		});
 		
 		JButton PW_btn = new JButton("비밀번호찾기");
+		PW_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		PW_btn.setBackground(Color.cyan);
+		PW_btn.setForeground(Color.MAGENTA);
 		PW_btn.setBounds(301, 192, 128, 67);
 		Background.add(PW_btn);
 		PW_btn.addActionListener(new ActionListener() {
@@ -86,6 +95,9 @@ public class Login extends JFrame {
 			}
 		});
 		JButton Signup_btn= new JButton("회원가입");
+		Signup_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		Signup_btn.setBackground(Color.CYAN);
+		Signup_btn.setForeground(Color.MAGENTA);
 		Signup_btn.setBounds(443, 192, 105, 67);
 		Background.add(Signup_btn);
 		Signup_btn.addActionListener(new ActionListener() {
@@ -100,6 +112,9 @@ public class Login extends JFrame {
 		});
 		
 		JButton Login_btn= new JButton("로그인");
+		Login_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		Login_btn.setBackground(Color.CYAN);
+		Login_btn.setForeground(Color.MAGENTA);
 		Login_btn.setBounds(156, 312, 105, 67);
 		Background.add(Login_btn);
 		Login_btn.addActionListener(new ActionListener() {
@@ -114,6 +129,7 @@ public class Login extends JFrame {
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PW from 회원";
+			    String select1="select*from 피시방 where pc=1";
 				String user = "minhyung"; 
 		        String pw = "1234";
 		        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
@@ -123,13 +139,21 @@ public class Login extends JFrame {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");      
 		        conn = DriverManager.getConnection(url, user, pw);	       
 		    	spstm=conn.prepareStatement(select);
+		    	pstm=conn.prepareStatement(select1);
 		    	rs=spstm.executeQuery();
 		    	while(rs.next()) {
 		    		did= rs.getString("ID");
 		    		dpw= rs.getString("PW");
 		    		if(did.equals(id)&&dpw.equals(pwd)) {
+		    			lid=id;
+		    			lpw=pwd;
+		                pstm = conn.prepareStatement(select1);
+		                rs = pstm.executeQuery();
+		                while(rs.next()){
+		            	pctotal=rs.getInt("total"); 		    			
+		                }
 		    			JOptionPane.showMessageDialog(null,"Login Success");
-					frame.setVisible(false);
+		    			frame.setVisible(false);
 						new LoginNextMain();	
 		    			break;
 		    		}
@@ -160,6 +184,9 @@ public class Login extends JFrame {
 		});
 		
 		JButton Manager_btn= new JButton("관리");
+		Manager_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		Manager_btn.setBackground(Color.CYAN);
+		Manager_btn.setForeground(Color.MAGENTA);
 		Manager_btn.setBounds(301, 312, 105, 67);
 		Background.add(Manager_btn);
 		Manager_btn.addActionListener(new ActionListener() {
@@ -174,6 +201,9 @@ public class Login extends JFrame {
 		});
 		
 		JButton Exit_btn = new JButton("종료");
+		Exit_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		Exit_btn.setBackground(Color.CYAN);
+		Exit_btn.setForeground(Color.MAGENTA);
 		Exit_btn.setBounds(443, 312, 105, 67);
 		Background.add(Exit_btn);
 		Exit_btn.addActionListener(new ActionListener() {
@@ -186,7 +216,6 @@ public class Login extends JFrame {
 			}
 			
 		});
-		
 		
 		
 		frame.setSize(800,480);
