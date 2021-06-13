@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -40,6 +41,9 @@ LoginNextMain(){
 	Background.add(MainLabel);
 	
 	JButton ReserVation_btn = new JButton("예약하기");
+	ReserVation_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	ReserVation_btn.setBackground(Color.LIGHT_GRAY);
+	ReserVation_btn.setForeground(Color.blue);
 	ReserVation_btn.setLayout(null);
 	ReserVation_btn.setBounds(244, 75, 224, 41);
 	Background.add(ReserVation_btn);
@@ -74,7 +78,7 @@ LoginNextMain(){
 				JOptionPane.showMessageDialog(null, "이미 예약된 정보가 있습니다. 예약 취소 후 사용해 주시기 바랍니다","Message",JOptionPane.ERROR_MESSAGE);
 			}
 	    	else {
-				setVisible(false);
+				frame.setVisible(false);
 				new Reservation1();
         	}
 	         } catch (SQLException be) {
@@ -100,6 +104,9 @@ LoginNextMain(){
 	});
 	
 	JButton Cancel_reservation_btn = new JButton("예약취소하기");
+	Cancel_reservation_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Cancel_reservation_btn.setBackground(Color.LIGHT_GRAY);
+	Cancel_reservation_btn.setForeground(Color.blue);
 	Cancel_reservation_btn.setLayout(null);
 	Cancel_reservation_btn.setBounds(244, 141, 224, 41);
 	Background.add(Cancel_reservation_btn);
@@ -131,7 +138,7 @@ LoginNextMain(){
 					break;
 				}
             	if(did.equals(Login.lid)&&dseat!=0) {
-					setVisible(false);
+					frame.setVisible(false);
 					new Reservation2();
 				}
 	    	}
@@ -157,6 +164,9 @@ LoginNextMain(){
 	});
 	
 	JButton Confirm_btn = new JButton("예약한 좌석 확인하기");
+	Confirm_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Confirm_btn.setBackground(Color.LIGHT_GRAY);
+	Confirm_btn.setForeground(Color.blue);
 	Confirm_btn.setLayout(null);
 	Confirm_btn.setBounds(244, 205, 224, 41);
 	Background.add(Confirm_btn);
@@ -188,7 +198,7 @@ LoginNextMain(){
 					break;
 				}
 	    	}
-				setVisible(false);
+				frame.setVisible(false);
 				new Reservation3();
 	         } catch (SQLException be) {
 	        	 System.out.println("sql오류");
@@ -211,6 +221,9 @@ LoginNextMain(){
 	});
 	
 	JButton Seat_Info_btn = new JButton("좌석 현황");
+	Seat_Info_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Seat_Info_btn.setBackground(Color.LIGHT_GRAY);
+	Seat_Info_btn.setForeground(Color.blue);
 	Seat_Info_btn.setLayout(null);
 	Seat_Info_btn.setBounds(244, 265, 224, 41);
 	Background.add(Seat_Info_btn);
@@ -225,6 +238,9 @@ LoginNextMain(){
 	});
 	
 	JButton Logout_btn = new JButton("로그아웃");
+	Logout_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Logout_btn.setBackground(Color.LIGHT_GRAY);
+	Logout_btn.setForeground(Color.blue);
 	Logout_btn.setLayout(null);
 	Logout_btn.setBounds(244, 332, 224, 41);
 	Background.add(Logout_btn);
@@ -240,6 +256,9 @@ LoginNextMain(){
 	});
 	
 	JButton Exit_btn = new JButton("종료");
+	Exit_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Exit_btn.setBackground(Color.LIGHT_GRAY);
+	Exit_btn.setForeground(Color.BLUE);
 	Exit_btn.setLayout(null);
 	Exit_btn.setBounds(244, 392, 224, 41);
 	Background.add(Exit_btn);
