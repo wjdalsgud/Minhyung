@@ -1,39 +1,71 @@
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Reservation1 extends JFrame{
-JCheckBox[] place=new JCheckBox[100];
-String[] name = new String [100];
-
+JCheckBox[] place=new JCheckBox[Login.pctotal];
+String[] name = new String [Login.pctotal];
 JCheckBox did2 = null;
 	Reservation1() {
-		for(int n=0; n<100; n++) {
+		Connection conn5 = null; // DB연결된 상태(세션)을 담은 객체
+	    PreparedStatement pstm5 = null;  // SQL 문을 나타내는 객체
+	    ResultSet rs5 = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+	    String select5="select*from 피시방좌석";
+		String user = "minhyung"; 
+        String pw = "1234";
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
+        String did=null;
+        int dpc=0;
+		try {
+	        Class.forName("oracle.jdbc.driver.OracleDriver");      
+	        conn5 = DriverManager.getConnection(url, user, pw);	       
+
+		for(int n=0; n<Login.pctotal; n++) {
 			name[n] = (n+1)+"번째 자리";
 		}
-		JTextField tf = new JTextField(10);
 		 setTitle("예약화면");
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 Container c=getContentPane();
 		 c.setLayout(new FlowLayout(FlowLayout.LEFT,5,40));
-		 for(int i=0;i<place.length;i++) {
+		 ButtonGroup bg=new ButtonGroup();
+		 pstm5=conn5.prepareStatement(select5);
+	    	rs5=pstm5.executeQuery();
+	    	int i=0;
+		 while(rs5.next()) {
+			 String id5 = rs5.getString("PC");
+             int pw5 = rs5.getInt("SEAT");
+             int seat5 = rs5.getInt("예약유무");
 			 place[i]=new JCheckBox(name[i]);
 			 place[i].setBorderPainted(true);
+			 if(seat5==1) {
+				 place[i].setEnabled(false);
+			 }else {
+				 place[i].setEnabled(true);
+			 }
+			 bg.add(place[i]);
 			 c.add(place[i]);
+			 i++;
 		 }
 		 JButton b1=new JButton("뒤로가기");
+		 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		 b1.setBackground(Color.LIGHT_GRAY);
+		 b1.setForeground(Color.BLUE);
 		 b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
@@ -41,73 +73,62 @@ JCheckBox did2 = null;
 			}
 		 });
 		 JButton b2=new JButton("예약하기");
+		 b2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		 b2.setBackground(Color.LIGHT_GRAY);
+		 b2.setForeground(Color.BLUE);
 		 b2.addActionListener(new ActionListener(){
-			 
-				@SuppressWarnings("unlikely-arg-type")
+
 				public void actionPerformed(ActionEvent e) {
-					// String str = "";
-					int count = 0;
-					for(int seat=0; seat<place.length;seat++) {
-						if(place[seat].isSelected()) {
-							count++;
-							if(count >1) {
-								JOptionPane.showMessageDialog(b2 , "1개 이상 선택하실 수 없습니다","에러",JOptionPane.ERROR_MESSAGE);
+					Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+				    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+				    PreparedStatement pstm1 = null;  // SQL 문을 나타내는 객체
+				    PreparedStatement spstm=null;
+				    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+				    String select="select*from 예약좌석";
+					String user = "minhyung"; 
+			        String pw = "1234";
+			        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
+			        String did=null;
+			        int seat=0;
+			        int dpc=0;
+			        try {
+				        Class.forName("oracle.jdbc.driver.OracleDriver");      
+				        conn = DriverManager.getConnection(url, user, pw);	       
+				    	spstm=conn.prepareStatement(select);
+				    	rs=spstm.executeQuery();
+						for(seat=0; seat<place.length;seat++) {
+							if(place[seat].isSelected()) {
+					            String SQL="UPDATE 예약좌석 SET SEAT="+(seat+1)+" WHERE ID='"+Login.lid+"'";
+					            String SQL1="UPDATE 피시방좌석 SET 예약유무=1 WHERE SEAT="+(seat+1)+"";
+					            pstm = conn.prepareStatement(SQL);
+					            pstm1 = conn.prepareStatement(SQL1);
+					        	int r= pstm.executeUpdate();
+					        	int r1=pstm1.executeUpdate();
+								JOptionPane.showMessageDialog(null, "선택하신 "+(seat+1)+"번 자리가 예약되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);                 
+								setVisible(false);
+								new LoginNextMain();	
 							}
 						}
-						String id;
-						id = tf.getText();
-						Connection con = null;  // DB연결된 세션을 담은 객체
-						PreparedStatement pstm =null; // SQL 문을 나타내는 객체
-						PreparedStatement spstm = null; 
-						ResultSet Result =null; // 쿼리문을 날린것에 반환값 담는 객체
-						String sql = "insert into 좌석정보 values(?)";
-						String select = "select 좌석 from 좌석정보";
-						String user = "minhyung";
-						String pw = "1234";
-						String url = "jdbc:oracle:thin:@localhost:1521:xe";
-						String did = null;
-					
-					try {
-						Class.forName("oracle.jdbc.driver.OracleDriver");
-						con = DriverManager.getConnection(url, user , pw);
-						spstm = con.prepareStatement(select);
-						Result = spstm.executeQuery();
-						while(Result.next()) {
-							did= Result.getString("좌석");
-							if(did.equals(place[seat])) {
-								JOptionPane.showMessageDialog(null, "이미 예약된 좌석입니다","에러",JOptionPane.ERROR_MESSAGE);
-								break;
-							}
-						}
-					}
-					catch(SQLException message) {
-						System.out.println("SQL 오류");
-						message.printStackTrace();
-					}
-					catch(Exception message_1) {
-						System.out.println("Error");
-					}
-					finally {
-						if(!did.equals(place[seat])) {
-							did2 = place[seat];
-							JOptionPane.showMessageDialog(null, "예약 가능한 좌석입니다");
-						}
-						try {
-							if(Result != null) {Result.close();}
-							if(pstm != null) {pstm.close();}
-							if(con != null) {con.close();}
-												
-					}
-						catch(Exception ne) {
-							throw new RuntimeException(ne.getMessage());
-		}
-	}
-}
-					setVisible(false);
-					new LoginNextMain();	
-					}
-			
-		 });
+				         } catch (SQLException be) {
+				        	 System.out.println("sql오류");
+				        	 be.printStackTrace();
+				        }catch(Exception ne) {
+				        	System.out.println("오류");
+				        }
+				        finally{
+				            // DB 연결을 종료한다.
+
+				            try{
+				                if ( rs != null ){rs.close();}   
+				                if ( pstm != null ){pstm.close();}   
+				                if ( conn != null ){conn.close(); }
+				            }catch(Exception me){
+				                throw new RuntimeException(me.getMessage());
+				            }	        
+				        }			
+				}
+			 });
+
 		 JPanel a= new JPanel();
 		 a.setLayout(new FlowLayout(FlowLayout.CENTER,70,40));
 		 a.add(b1);
@@ -115,6 +136,20 @@ JCheckBox did2 = null;
 		 c.add(a);
 
 		setVisible(true);
-		setSize(400,400);
+		setSize(3840,2400);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		 finally{
+	            // DB 연결을 종료한다.
+	            try{
+	                if ( rs5 != null ){rs5.close();}   
+	                if ( pstm5 != null ){pstm5.close();}   
+	                if ( conn5 != null ){conn5.close(); }
+	            }catch(Exception me){
+	                throw new RuntimeException(me.getMessage());
+	            }	        
+	        }
 	}
 }
