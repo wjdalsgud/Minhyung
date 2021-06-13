@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -46,6 +48,9 @@ NewID(){
 	ID_TXT.setColumns(10);
 	
 	JButton ID_BTN = new JButton("아이디 중복확인");
+	ID_BTN.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	ID_BTN.setBackground(Color.LIGHT_GRAY);
+	ID_BTN.setForeground(Color.BLUE);
 	ID_BTN.setLayout(null);
 	ID_BTN.setBounds(78, 84, 133, 42);
 	Background.add(ID_BTN);
@@ -126,6 +131,9 @@ NewID(){
 	phone_txt.setColumns(10);
 	
 	JButton Back_btn = new JButton("뒤로가기");
+	Back_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Back_btn.setBackground(Color.LIGHT_GRAY);
+	Back_btn.setForeground(Color.BLUE);
 	 Back_btn.setLayout(null);
 	 Back_btn.setBounds(12, 210, 112, 43);
 	 Background.add(Back_btn);
@@ -142,6 +150,9 @@ NewID(){
 	 
 	 
 	JButton Sing_up =new JButton("회원가입");
+	Sing_up.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	Sing_up.setBackground(Color.LIGHT_GRAY);
+	Sing_up.setForeground(Color.BLUE);
 	Sing_up.setLayout(null);
 	Sing_up.setBounds(144, 210, 112, 43);
 	Background.add(Sing_up);
