@@ -191,7 +191,7 @@ NewID(){
 		    	pstm.executeUpdate();
 		    	pstm1.executeUpdate();
 		    	JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);
-				setVisible(false);	
+				frame.setVisible(false);	
 				new Login();
 			}else {
 				JOptionPane.showMessageDialog(null, "ID중복확인을 완료한 아이디로 입력해주세요","Message",JOptionPane.ERROR_MESSAGE);
