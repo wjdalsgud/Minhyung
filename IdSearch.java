@@ -37,7 +37,7 @@ public class IdSearch extends JFrame{
 		
 		
 		
-		JLabel ab=new JLabel("아이디 찾기     "); 
+		JLabel ab=new JLabel("아이디 찾기"); 
 		ab.setLayout(null);
 		ab.setBounds(102,10,83 , 45);
 		ab.setFont(new Font("HY수평선",Font.BOLD,13));
@@ -72,7 +72,6 @@ public class IdSearch extends JFrame{
 		Background.add(abcd);
 		 abcd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
-					frame.setVisible(false);
 					frame.setVisible(false);
 					new Login();	
 			}
