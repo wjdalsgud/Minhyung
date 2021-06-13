@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,9 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Manage2 extends JFrame{
+public class Manager2 extends JFrame{
 
-	Manage2(){
+	Manager2(){
 		Container c= getContentPane();
 		setTitle("회원 삭제");
 		JPanel a= new JPanel();
@@ -40,6 +42,9 @@ public class Manage2 extends JFrame{
 			}
 		 });
 		JButton abcd1=new JButton("아이디 삭제");
+		abcd1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd1.setBackground(Color.LIGHT_GRAY);
+		abcd1.setForeground(Color.blue);
 		abcd1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				
@@ -50,9 +55,9 @@ public class Manage2 extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PHONE from 회원";
-				String user = "sys as sysdba"; 
-		        String pw = "Gksmf1238";
-		        String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
+				String user = "minhyung"; 
+		        String pw = "1234";
+		        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 		        String did=null;
 		        String dphone=null;
 		        String dpw= null;
