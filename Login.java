@@ -68,8 +68,8 @@ public class Login extends JFrame {
 		
 		JButton ID_btn = new JButton("아이디 찾기");
 		ID_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		ID_btn.setBackground(Color.cyan);
-		ID_btn.setForeground(Color.MAGENTA);
+		ID_btn.setBackground(Color.LIGHT_GRAY);
+		ID_btn.setForeground(Color.BLUE);
 		ID_btn.setBounds(156, 192, 105, 67);
 		Background.add(ID_btn);
 		ID_btn.addActionListener(new ActionListener() {
@@ -84,8 +84,8 @@ public class Login extends JFrame {
 		
 		JButton PW_btn = new JButton("비밀번호찾기");
 		PW_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		PW_btn.setBackground(Color.cyan);
-		PW_btn.setForeground(Color.MAGENTA);
+		PW_btn.setBackground(Color.LIGHT_GRAY);
+		PW_btn.setForeground(Color.BLUE);
 		PW_btn.setBounds(301, 192, 128, 67);
 		Background.add(PW_btn);
 		PW_btn.addActionListener(new ActionListener() {
@@ -96,8 +96,8 @@ public class Login extends JFrame {
 		});
 		JButton Signup_btn= new JButton("회원가입");
 		Signup_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		Signup_btn.setBackground(Color.CYAN);
-		Signup_btn.setForeground(Color.MAGENTA);
+		Signup_btn.setBackground(Color.LIGHT_GRAY);
+		Signup_btn.setForeground(Color.BLUE);
 		Signup_btn.setBounds(443, 192, 105, 67);
 		Background.add(Signup_btn);
 		Signup_btn.addActionListener(new ActionListener() {
@@ -113,8 +113,8 @@ public class Login extends JFrame {
 		
 		JButton Login_btn= new JButton("로그인");
 		Login_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		Login_btn.setBackground(Color.CYAN);
-		Login_btn.setForeground(Color.MAGENTA);
+		Login_btn.setBackground(Color.LIGHT_GRAY);
+		Login_btn.setForeground(Color.BLUE);
 		Login_btn.setBounds(156, 312, 105, 67);
 		Background.add(Login_btn);
 		Login_btn.addActionListener(new ActionListener() {
@@ -185,8 +185,8 @@ public class Login extends JFrame {
 		
 		JButton Manager_btn= new JButton("관리");
 		Manager_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		Manager_btn.setBackground(Color.CYAN);
-		Manager_btn.setForeground(Color.MAGENTA);
+		Manager_btn.setBackground(Color.LIGHT_GRAY);
+		Manager_btn.setForeground(Color.blue);
 		Manager_btn.setBounds(301, 312, 105, 67);
 		Background.add(Manager_btn);
 		Manager_btn.addActionListener(new ActionListener() {
@@ -202,8 +202,8 @@ public class Login extends JFrame {
 		
 		JButton Exit_btn = new JButton("종료");
 		Exit_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		Exit_btn.setBackground(Color.CYAN);
-		Exit_btn.setForeground(Color.MAGENTA);
+		Exit_btn.setBackground(Color.LIGHT_GRAY);
+		Exit_btn.setForeground(Color.BLUE);
 		Exit_btn.setBounds(443, 312, 105, 67);
 		Background.add(Exit_btn);
 		Exit_btn.addActionListener(new ActionListener() {
