@@ -1,7 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,6 +27,9 @@ public class Manager extends JFrame{
 	 JTextField jt1=new JTextField(18);
 	 q1.add(jt1);
 	 JButton b1=new JButton("로그인");
+	 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	 b1.setBackground(Color.LIGHT_GRAY);
+	 b1.setForeground(Color.blue);
 	 b1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				String id,pwd;
@@ -41,9 +40,9 @@ public class Manager extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PW from 관리자";
-				String user = "sys as sysdba"; 
-		        String pw = "Gksmf1238";
-		        String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
+				String user = "minhyung"; 
+		        String pw = "1234";
+		        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 		        String did=null;
 		        String dpw=null;
 		        try {
@@ -84,6 +83,9 @@ public class Manager extends JFrame{
 		}
 	 });
 	 JButton abcd= new JButton("뒤로가기");
+	 abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	 abcd.setBackground(Color.LIGHT_GRAY);
+	 abcd.setForeground(Color.blue);
 	 abcd.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
