@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +38,9 @@ public class PwSearch extends JFrame{
 		JLabel ab3= new JLabel("전화번호 ");
 		JTextField abc12= new JTextField(15);
 		JButton abcd= new JButton("뒤로가기");
+		abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd.setBackground(Color.LIGHT_GRAY);
+		abcd.setForeground(Color.BLUE);
 		 abcd.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
@@ -43,6 +48,9 @@ public class PwSearch extends JFrame{
 			}
 		 });
 		JButton abcd1=new JButton("비밀번호 검색");
+		abcd1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd1.setBackground(Color.LIGHT_GRAY);
+		abcd1.setForeground(Color.BLUE);
 		abcd1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 
@@ -54,9 +62,9 @@ public class PwSearch extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PW,PHONE from 회원";
-				String user = "minhyung"; 
-			    String pw = "1234";
-			    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
+				String user = "sys as sysdba"; 
+			    String pw = "Gksmf1238";
+			    String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
 			    String did = null;
 			    String dphone=null;
 			    String pwd=null;
