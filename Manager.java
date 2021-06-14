@@ -1,3 +1,9 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Manager extends JFrame{
@@ -24,7 +31,7 @@ public class Manager extends JFrame{
 	 JTextField jt= new JTextField(18);
 	 q1.add(jt);
 	 q1.add(new JLabel(" 비밀번호"));
-	 JTextField jt1=new JTextField(18);
+	 JPasswordField jt1=new JPasswordField(18);
 	 q1.add(jt1);
 	 JButton b1=new JButton("로그인");
 	 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -92,6 +99,19 @@ public class Manager extends JFrame{
 				new Login();	
 		}
 	 });
+	 
+	 JButton Signup_btn= new JButton("회원가입");
+		Signup_btn.setLayout(null);
+		Signup_btn.setBounds(193,290,107,42);
+		Signup_btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			     setVisible(false);
+				new ManagerID();
+				
+			}
+			
+		});
 	 c.setLayout(new BorderLayout());
 	 q1.add(b1);
 	 c.add(q1);
@@ -99,5 +119,5 @@ public class Manager extends JFrame{
 	 setSize(300,400);
 	 setVisible(true);
 	 
-}
+	}
 }
