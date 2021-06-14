@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,28 +22,57 @@ import javax.swing.JTextField;
 
 public class Manager extends JFrame{
 	Manager(){
-	setTitle("관리자 로그인 화면");
-	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	 Container c=getContentPane();
-	 JPanel q1= new JPanel();
-	 JLabel j=new JLabel("관리자 로그인 화면");
-	 q1.add(j);
-	 JLabel j1=new JLabel("  아 이 디 ");
-	 q1.add(j1);
-	 JTextField jt= new JTextField(18);
-	 q1.add(jt);
-	 q1.add(new JLabel(" 비밀번호"));
-	 JPasswordField jt1=new JPasswordField(18);
-	 q1.add(jt1);
-	 JButton b1=new JButton("로그인");
-	 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	 b1.setBackground(Color.LIGHT_GRAY);
-	 b1.setForeground(Color.blue);
-	 b1.addActionListener(new ActionListener(){
+		JFrame frame = new JFrame();
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Tree.jpg").getImage());
+		frame.getContentPane().add(Background,BorderLayout.NORTH);
+		frame.setTitle("관리자 로그인 화면");
+		
+		Background.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("관리자 로그인");
+		lblNewLabel.setLayout(null);
+		lblNewLabel.setBounds(82, 28, 125, 30);
+		lblNewLabel.setFont(new Font("HY수평선M",Font.BOLD,15));
+		lblNewLabel.setForeground(Color.WHITE);
+		Background.add(lblNewLabel);
+		
+		JLabel ID = new JLabel("ID");
+		ID.setLayout(null);
+		ID.setBounds(28, 87, 50, 15);
+		ID.setForeground(Color.WHITE);
+		Background.add(ID);
+		
+		JLabel Pass = new JLabel("Password");
+		Pass.setLayout(null);
+		Pass.setBounds(12, 128, 77, 15);
+		Pass.setForeground(Color.WHITE);
+		Background.add(Pass);
+		
+		JTextField ID_TXT = new JTextField();
+		ID_TXT.setBounds(73, 84, 96, 21);
+		Background.add(ID_TXT);
+		ID_TXT.setColumns(18);
+		
+		JPasswordField Pass_TXT = new JPasswordField();
+		 Pass_TXT.setBounds(73, 125, 96, 21);
+		 Background.add(Pass_TXT);
+		 Pass_TXT.setColumns(18);
+	
+		
+		 JButton Login = new JButton("로그인");
+		 Login.setLayout(null);
+		 Login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		 Login.setBackground(Color.lightGray);
+		 Login.setForeground(Color.BLUE);
+		 Login.setBounds(12, 200, 91, 23);
+		 Background.add(Login);
+		 Login.addActionListener(new ActionListener() {
+
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				String id,pwd;
-				id=jt.getText();
-				pwd=jt1.getText();
+				id=ID_TXT.getText();
+				pwd=Pass_TXT.getText();
 				Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 			    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
 			    PreparedStatement spstm=null;
@@ -62,7 +93,7 @@ public class Manager extends JFrame{
 		    		dpw= rs.getString("PW");
 		    		if(did.equals(id)&&dpw.equals(pwd)) {
 		    			System.out.println("로그인에 성공했습니다");
-						setVisible(false);
+						frame.setVisible(false);
 						new ManagerMain();	
 		    			break;
 		    		}
@@ -87,37 +118,53 @@ public class Manager extends JFrame{
 		            }
 		            
 		        }
-		}
-	 });
-	 JButton abcd= new JButton("뒤로가기");
-	 abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	 abcd.setBackground(Color.LIGHT_GRAY);
-	 abcd.setForeground(Color.blue);
-	 abcd.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				new Login();	
-		}
-	 });
-	 
-	 JButton Signup_btn= new JButton("회원가입");
-		Signup_btn.setLayout(null);
-		Signup_btn.setBounds(193,290,107,42);
-		Signup_btn.addActionListener(new ActionListener() {
+				
+			}
+			 
+		 });
+		
+		JButton b = new JButton("뒤로가기");
+		b.setLayout(null);
+		b.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b.setBackground(Color.LIGHT_GRAY);
+		b.setForeground(Color.BLUE);
+		b.setBounds(139, 200, 91, 23);
+		Background.add(b);
+		b.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			     setVisible(false);
+				frame.setVisible(false);
+				new Login();
+				
+			}
+			
+		});
+		
+		JButton sign = new JButton("회원가입");
+		sign.setLayout(null);
+		sign.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		sign.setBackground(Color.LIGHT_GRAY);
+		sign.setForeground(Color.BLUE);
+		sign.setBounds(82, 243, 91, 23);
+		Background.add(sign);
+		sign.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				new ManagerID();
 				
 			}
 			
 		});
-	 c.setLayout(new BorderLayout());
-	 q1.add(b1);
-	 c.add(q1);
-	 q1.add(abcd);
-	 setSize(300,400);
-	 setVisible(true);
-	 
-	}
+		
+		
+		
+		frame.setSize(300,400);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
 }
