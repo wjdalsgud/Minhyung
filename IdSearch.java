@@ -28,7 +28,7 @@ public class IdSearch extends JFrame{
 	IdSearch(){
 		JFrame frame = new JFrame();
 
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Blue.jpg").getImage()); //Blue
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint2.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("아이디찾기");
 		
