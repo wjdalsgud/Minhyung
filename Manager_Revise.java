@@ -10,33 +10,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Manager extends JFrame{
 	Manager(){
-		
 	setTitle("관리자 로그인 화면");
-	
 	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 Container c=getContentPane();
 	 JPanel q1= new JPanel();
 	 JLabel j=new JLabel("관리자 로그인 화면");
-	
 	 q1.add(j);
 	 JLabel j1=new JLabel("  아 이 디 ");
 	 q1.add(j1);
 	 JTextField jt= new JTextField(18);
 	 q1.add(jt);
 	 q1.add(new JLabel(" 비밀번호"));
-	 JTextField jt1=new JTextField(18);
+	 JPasswordField jt1=new JPasswordField(18);
 	 q1.add(jt1);
 	 JButton b1=new JButton("로그인");
+	 b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	 b1.setBackground(Color.LIGHT_GRAY);
+	 b1.setForeground(Color.blue);
 	 b1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				String id,pwd;
@@ -47,7 +47,7 @@ public class Manager extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PW from 관리자";
-				String user = "kimheemok"; 
+				String user = "minhyung"; 
 		        String pw = "1234";
 		        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 		        String did=null;
@@ -89,9 +89,10 @@ public class Manager extends JFrame{
 		        }
 		}
 	 });
-	
-		
 	 JButton abcd= new JButton("뒤로가기");
+	 abcd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	 abcd.setBackground(Color.LIGHT_GRAY);
+	 abcd.setForeground(Color.blue);
 	 abcd.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -114,7 +115,6 @@ public class Manager extends JFrame{
 	 c.setLayout(new BorderLayout());
 	 q1.add(b1);
 	 c.add(q1);
-	 q1.add(Signup_btn);
 	 q1.add(abcd);
 	 setSize(300,400);
 	 setVisible(true);
