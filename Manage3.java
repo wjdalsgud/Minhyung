@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,8 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Manage3 extends JFrame{
-
+static String did123=" ";
 	Manage3(){
+
 		Container c= getContentPane();
 		setTitle("회원 수정");
 		JPanel a= new JPanel();
@@ -39,12 +41,15 @@ public class Manage3 extends JFrame{
 					new ManagerMain();	
 			}
 		 });
-		JButton abcd1=new JButton("회원 수정");
+		JButton abcd1=new JButton("아이디 변경");
+		abcd1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		abcd1.setBackground(Color.LIGHT_GRAY);
+		abcd1.setForeground(Color.blue);
 		abcd1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
-				String id,phone;
-				phone=abc.getText();
+
+				String id;
+				id=abc.getText();
 				Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 			    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
 			    PreparedStatement spstm=null;
@@ -64,13 +69,16 @@ public class Manage3 extends JFrame{
 		    	while(rs.next()) {
 		    		did=rs.getString("ID");
 		    		dphone= rs.getString("PHONE");
-		    		if(dphone.equals(phone)) {
-		    			JOptionPane.showMessageDialog(null, "ID : "+did,"Message",JOptionPane.INFORMATION_MESSAGE);
+		    		if(did.equals(id)) {
+		    		did123=id;
+		    			setVisible(false);
+						new NewManager();
+		    			
 		    			break;
 		    		}
 		    	}
-		    	if(!dphone.equals(phone)) {
-		    		JOptionPane.showMessageDialog(null, "아이디를 잘못 입력했습니다","Message",JOptionPane.ERROR_MESSAGE);
+		    	if(!did.equals(id)) {
+		    		JOptionPane.showMessageDialog(null, "존재하지않는 아이디입니다.","Message",JOptionPane.ERROR_MESSAGE);
 				}
 		         } catch (SQLException be) {
 		        	 System.out.println("sql오류");
