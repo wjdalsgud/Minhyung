@@ -74,7 +74,7 @@ static String did123=" ";
 		});
 		
 		
-		JButton Change = new JButton("아이디 변경");
+		JButton Change = new JButton("정보 수정");
 		Change.setLayout(null);
 		Change.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		Change.setBackground(Color.LIGHT_GRAY);
@@ -138,6 +138,10 @@ static String did123=" ";
 			}
 			
 		});
+		
+		
+		
+		
 		frame.setSize(300,200);
 		frame.setVisible(true);
 		frame.setResizable(false);
