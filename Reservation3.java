@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class Reservation3 extends JFrame{
 	Reservation3(){
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Mountain.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Mountain.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("예약확인화면");
 		
