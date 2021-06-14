@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Manage2 extends JFrame{
+public class Manager2 extends JFrame{
 
-	Manage2(){
+	Manager2(){
 
 		Container c= getContentPane();
 		setTitle("회원 삭제");
