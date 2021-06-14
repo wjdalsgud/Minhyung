@@ -114,4 +114,3 @@ public class Manager2 extends JFrame{
 		setVisible(true);
 	}	
 }
-
