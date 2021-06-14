@@ -138,10 +138,6 @@ static String did123=" ";
 			}
 			
 		});
-		
-		
-		
-		
 		frame.setSize(300,200);
 		frame.setVisible(true);
 		frame.setResizable(false);
