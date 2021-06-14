@@ -37,7 +37,7 @@ static String did123=" ";
 		Main.setForeground(Color.BLACK);
 		Background.add(Main);
 		
-		JLabel a = new JLabel("관리자 아이디를 입력해주세요");
+		JLabel a = new JLabel(" 아이디를 입력해주세요");
 		a.setLayout(null);
 		a.setForeground(Color.BLACK);
 		a.setBounds(31, 41, 225, 35);
