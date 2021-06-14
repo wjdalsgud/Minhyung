@@ -62,9 +62,9 @@ public class PwSearch extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PW,PHONE from 회원";
-				String user = "sys as sysdba"; 
-			    String pw = "Gksmf1238";
-			    String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
+				String user = "minhyung"; 
+			    String pw = "1234";
+			    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 			    String did = null;
 			    String dphone=null;
 			    String pwd=null;
