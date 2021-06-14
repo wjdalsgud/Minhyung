@@ -23,7 +23,7 @@ public class LoginNextMain extends JFrame{
 LoginNextMain(){
 	
 	JFrame frame = new JFrame();
-	ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Wallpaper.jpg").getImage());
+	ImagePanel Background= new ImagePanel(new ImageIcon("./image/Wallpaper.jpg").getImage());
 	frame.getContentPane().add(Background,BorderLayout.NORTH);
 	frame.setTitle("메인 화면");
 	
