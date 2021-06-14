@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 public class Manager extends JFrame{
 	Manager(){
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Tree.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Tree.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("관리자 로그인 화면");
 		
@@ -158,10 +158,14 @@ public class Manager extends JFrame{
 			}
 			
 		});
+		
+		
+		
 		frame.setSize(300,400);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		}
 	}
