@@ -35,19 +35,12 @@ public class IdSearch extends JFrame{
 		Background.setLayout(null);
 	
 		
-		
-		
 		JLabel ab=new JLabel("아이디 찾기"); 
 		ab.setLayout(null);
 		ab.setBounds(102,10,83 , 45);
 		ab.setFont(new Font("HY수평선",Font.BOLD,13));
 		ab.setForeground(Color.black);
 		Background.add(ab);
-		
-		
-		
-		
-	
 		
 		JLabel ab1=new JLabel("전화번호를 입력해주세요");
 		ab1.setLayout(null);
@@ -137,10 +130,6 @@ public class IdSearch extends JFrame{
 		}
 		
 	 });
-	
-	
-		
-	
 		frame.setSize(300,300);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
@@ -148,9 +137,6 @@ public class IdSearch extends JFrame{
 	
 			}
 	 }
-	
-
-
 class ImagePanel extends JPanel {
 	private Image img;
 	
