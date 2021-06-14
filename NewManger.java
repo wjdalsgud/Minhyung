@@ -25,7 +25,7 @@ public class NewManager extends JFrame {
 	NewManager() {
 		JFrame frame = new JFrame();
 
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint4.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/paint4.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("회원정보수정");
 
