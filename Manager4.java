@@ -16,7 +16,7 @@ public class Manager4 extends JFrame {
 
 	Manager4(){
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/City.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/City.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("좌석 관리 화면");
 		
