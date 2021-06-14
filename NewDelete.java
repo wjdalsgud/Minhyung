@@ -26,7 +26,7 @@ Newdelete(){
 
 	JFrame frame = new JFrame();
 
-	ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint3.jpg").getImage());
+	ImagePanel Background= new ImagePanel(new ImageIcon("./image/paint3.jpg").getImage());
 	frame.getContentPane().add(Background,BorderLayout.NORTH);
 	frame.setTitle("회원삭제");
 
