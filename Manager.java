@@ -158,13 +158,10 @@ public class Manager extends JFrame{
 			}
 			
 		});
-		
-		
-		
 		frame.setSize(300,400);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
-}
+	}
