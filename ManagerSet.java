@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -36,6 +37,10 @@ public class ManagerSet extends JFrame{
 		Background.add(j1);
 
 		JButton btnNewButton = new JButton("뒤로 가기");
+		btnNewButton.setLayout(null);
+		btnNewButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
+		btnNewButton.setForeground(Color.BLUE);
 		btnNewButton.setBounds(284, 131, 111, 57);
 		Background.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -50,25 +55,9 @@ public class ManagerSet extends JFrame{
 
 		});
 
-
-
 		frame.setSize(450, 500);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }
