@@ -55,7 +55,7 @@ public class Manage3 extends JFrame{
 			    PreparedStatement spstm=null;
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String select="select ID,PHONE from 회원";
-				String user = "kimheemok"; 
+				String user = "minhyung"; 
 		        String pw = "1234";
 		        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 		        String did=null;
