@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Reservation4 extends JFrame{
-JCheckBox[] place=new JCheckBox[100];
-String[] name = new String [100];
+JCheckBox[] place=new JCheckBox[Login.pctotal];
+String[] name = new String [Login.pctotal];
 JCheckBox did2 = null;
 	Reservation4() {
 		Connection conn5 = null; // DB연결된 상태(세션)을 담은 객체
@@ -34,7 +34,7 @@ JCheckBox did2 = null;
 	        Class.forName("oracle.jdbc.driver.OracleDriver");      
 	        conn5 = DriverManager.getConnection(url, user, pw);	       
 	    	
-		for(int n=0; n<100; n++) {
+		for(int n=0; n<Login.pctotal; n++) {
 			name[n] = (n+1)+"번째 자리";
 		}
 		 setTitle("예약화면");
@@ -59,6 +59,9 @@ JCheckBox did2 = null;
 			 bg.add(place[i]);
 			 c.add(place[i]);
 			 i++;
+			 if(i==Login.pctotal) {
+				 break;
+			 }
 		 }
 		 JButton b1=new JButton("뒤로가기");
 		 b1.addActionListener(new ActionListener(){
