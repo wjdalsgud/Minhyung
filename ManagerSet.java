@@ -13,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ManerSet extends JFrame{
+public class ManagerSet extends JFrame{
 
-	ManerSet(){
+	ManagerSet(){
 		JFrame frame = new JFrame();
 		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/82105/eclipse-workspace/dbj/image/Clock.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
