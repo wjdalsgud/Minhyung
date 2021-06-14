@@ -76,12 +76,10 @@ public class Login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				new IdSearch();
-				
+				new IdSearch();	
 			}
 		
 		});
-		
 		JButton PW_btn = new JButton("비밀번호찾기");
 		PW_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		PW_btn.setBackground(Color.LIGHT_GRAY);
@@ -101,7 +99,6 @@ public class Login extends JFrame {
 		Signup_btn.setBounds(443, 192, 105, 67);
 		Background.add(Signup_btn);
 		Signup_btn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
@@ -110,7 +107,6 @@ public class Login extends JFrame {
 			}
 			
 		});
-		
 		JButton Login_btn= new JButton("로그인");
 		Login_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		Login_btn.setBackground(Color.LIGHT_GRAY);
@@ -118,7 +114,6 @@ public class Login extends JFrame {
 		Login_btn.setBounds(156, 312, 105, 67);
 		Background.add(Login_btn);
 		Login_btn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String id,pwd;
@@ -182,7 +177,6 @@ public class Login extends JFrame {
 			}
 			
 		});
-		
 		JButton Manager_btn= new JButton("관리");
 		Manager_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		Manager_btn.setBackground(Color.LIGHT_GRAY);
@@ -190,7 +184,6 @@ public class Login extends JFrame {
 		Manager_btn.setBounds(301, 312, 105, 67);
 		Background.add(Manager_btn);
 		Manager_btn.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
@@ -199,7 +192,6 @@ public class Login extends JFrame {
 			}
 			
 		});
-		
 		JButton Exit_btn = new JButton("종료");
 		Exit_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		Exit_btn.setBackground(Color.LIGHT_GRAY);
@@ -216,7 +208,6 @@ public class Login extends JFrame {
 			}
 			
 		});
-		
 		
 		frame.setSize(800,480);
 		frame.setVisible(true);
