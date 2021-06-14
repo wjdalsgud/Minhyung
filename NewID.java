@@ -26,7 +26,7 @@ NewID(){
 	
 	JFrame frame = new JFrame();
 
-	ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint1.jpg").getImage());
+	ImagePanel Background= new ImagePanel(new ImageIcon("./image/paint1.jpg").getImage());
 	frame.getContentPane().add(Background,BorderLayout.NORTH);
 	frame.setTitle("회원가입");
 	
