@@ -89,13 +89,13 @@ public class ChangeSeat extends JFrame{
 			        try {
 			        Class.forName("oracle.jdbc.driver.OracleDriver");      
 			        conn = DriverManager.getConnection(url, user, pw);	     
-			        if(!a.getText().equals(null)&&t<166) {
+			        if(!a.getText().equals(null)&&t<401) {
 		            pstm = conn.prepareStatement(SQL);
 		        	int r= pstm.executeUpdate();
 		        	JOptionPane.showMessageDialog(null, "좌석수가 "+a.getText()+"으로 변경되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 			        }
 			        else if(t>165) {
-			        	JOptionPane.showMessageDialog(null, "좌석은 1000개 이상 만들 수 없습니다","Message",JOptionPane.INFORMATION_MESSAGE);
+			        	JOptionPane.showMessageDialog(null, "좌석은 400개 이상 만들 수 없습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 
 			        }
 			        else {
