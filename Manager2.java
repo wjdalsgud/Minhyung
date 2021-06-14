@@ -24,7 +24,7 @@ public class Manager2 extends JFrame{
 
 	Manager2(){
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Blue.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Blue.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("회원 삭제");
 		
@@ -144,5 +144,10 @@ public class Manager2 extends JFrame{
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+		
+		
 		}
 	}
