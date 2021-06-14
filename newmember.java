@@ -15,9 +15,9 @@ public class newmember {
 	    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 	    String sql="insert into 회원 values(?,?,?)";
 	    String select="select ID from 회원";
-		String user = "sys as sysdba"; 
-        String pw = "Gksmf1238";
-        String url = "jdbc:oracle:thin:@localhost:1521:orcl";	 
+		String user = "minhyung"; 
+        String pw = "1234";
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
         String did = null;
         try {
         Class.forName("oracle.jdbc.driver.OracleDriver");      
@@ -54,6 +54,7 @@ public class newmember {
  			System.out.println("sql오류");      
  			e.printStackTrace();
         }catch(Exception e) {
+        	e.printStackTrace();
         	System.out.println("오류");
         }
         finally{
