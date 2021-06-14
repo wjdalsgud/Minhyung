@@ -55,9 +55,12 @@ public class ManagerSet extends JFrame{
 
 		});
 
+
+
 		frame.setSize(450, 500);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 }
