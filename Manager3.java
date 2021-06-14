@@ -24,7 +24,7 @@ public class Manager3 extends JFrame{
 static String did123=" ";
     Manager3(){
     	JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Blue.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Blue.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("회원 수정");
 		
@@ -37,7 +37,7 @@ static String did123=" ";
 		Main.setForeground(Color.BLACK);
 		Background.add(Main);
 		
-		JLabel a = new JLabel(" 아이디를 입력해주세요");
+		JLabel a = new JLabel("회원 아이디를 입력해주세요");
 		a.setLayout(null);
 		a.setForeground(Color.BLACK);
 		a.setBounds(31, 41, 225, 35);
