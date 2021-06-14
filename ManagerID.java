@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -22,21 +24,23 @@ import javax.swing.JTextField;
 public class ManagerID extends JFrame{
 	String did1=null;
 	ManagerID(){ 
-		
 		JFrame frame = new JFrame();
 
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/82105/eclipse-workspace/dbj/image/abc.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Wallpaper.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("회원가입");
 		
 		Background.setLayout(null);
 		
+		
 		JLabel MainLabel = new JLabel("PC방 관리자 회원가입");
+		MainLabel.setForeground(Color.WHITE);
 		MainLabel.setLayout(null);
 		MainLabel.setBounds(66, 10, 173, 27);
 		Background.add(MainLabel);
 		
 		JLabel NEW_ID = new JLabel("아이디");
+		NEW_ID.setForeground(Color.WHITE);
 		NEW_ID.setLayout(null);
 		NEW_ID.setBounds(52, 47, 83, 27);
 		Background.add(NEW_ID);
@@ -63,7 +67,7 @@ public class ManagerID extends JFrame{
 			    ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
 			    String sql="insert into 관리자 values(?,?,?)";
 			    String select="select ID from 관리자";
-				String user = "kimheemok"; 
+				String user = "minhyung"; 
 			    String pw = "1234";
 			    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 			    String did = "";
@@ -105,12 +109,14 @@ public class ManagerID extends JFrame{
 		});
 		
 		JLabel pass = new JLabel("비밀번호");
+		pass.setForeground(Color.WHITE);
 		pass.setLayout(null);
 		pass.setBounds(41, 139, 83, 15);
 		Background.add(pass);
 		
 		JLabel phone = new JLabel("전화번호");
 		phone.setLayout(null);
+		phone.setForeground(Color.WHITE);
 		phone.setBounds(41, 173, 67, 15);
 		Background.add(phone);
 		
@@ -128,6 +134,9 @@ public class ManagerID extends JFrame{
 		
 		JButton Back_btn = new JButton("뒤로가기");
 		 Back_btn.setLayout(null);
+		 Back_btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		 Back_btn.setBackground(Color.LIGHT_GRAY);
+		 Back_btn.setForeground(Color.BLUE);
 		 Back_btn.setBounds(12, 210, 112, 43);
 		 Background.add(Back_btn);
 		 Back_btn.addActionListener(new ActionListener() {
@@ -143,6 +152,9 @@ public class ManagerID extends JFrame{
 		 
 		 
 		JButton Sing_up =new JButton("회원가입");
+		Sing_up.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		Sing_up.setBackground(Color.LIGHT_GRAY);
+		Sing_up.setForeground(Color.BLUE);
 		Sing_up.setLayout(null);
 		Sing_up.setBounds(144, 210, 112, 43);
 		Background.add(Sing_up);
@@ -163,7 +175,7 @@ public class ManagerID extends JFrame{
 			    String sql="insert into 관리자 values(?,?,?)";
 			    String sql1="insert into 예약좌석 values(?,?,?)";
 			    String select="select ID from 관리자";
-				String user = "kimheemok"; 
+				String user = "minhyung"; 
 			    String pw = "1234";
 			    String url = "jdbc:oracle:thin:@localhost:1521:xe";	 
 			    String did = null;
@@ -220,33 +232,10 @@ public class ManagerID extends JFrame{
 		});
 		
 		
-		
-		
-		
-		
-		
-
 		frame.setSize(300,300);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		}
 	}
