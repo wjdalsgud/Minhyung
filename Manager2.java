@@ -144,10 +144,5 @@ public class Manager2 extends JFrame{
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		
-		
-		
 		}
 	}
