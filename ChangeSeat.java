@@ -25,8 +25,7 @@ public class ChangeSeat extends JFrame{
 	ChangeSeat(){
 		
 		JFrame frame = new JFrame();
-		
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint.jpg").getImage()); //paint
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint.jpg").getImage());
 		
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("좌석 수 변경");
@@ -94,7 +93,7 @@ public class ChangeSeat extends JFrame{
 		        	int r= pstm.executeUpdate();
 		        	JOptionPane.showMessageDialog(null, "좌석수가 "+a.getText()+"으로 변경되었습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 			        }
-			        else if(t>165) {
+			        else if(t>400) {
 			        	JOptionPane.showMessageDialog(null, "좌석은 400개 이상 만들 수 없습니다","Message",JOptionPane.INFORMATION_MESSAGE);
 
 			        }
