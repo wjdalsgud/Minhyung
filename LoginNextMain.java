@@ -31,8 +31,6 @@ LoginNextMain(){
 	
 	Background.setLayout(null);
 	
-	
-	
 	JLabel MainLabel = new JLabel("PC방 좌석 예약 프로그램");
 	MainLabel.setLayout(null);
 	MainLabel.setBounds(265, 10, 280, 68);
@@ -272,9 +270,6 @@ LoginNextMain(){
 		}
 		
 	});
-	
-	
-	
 	frame.setSize(800,480);
 	frame.setVisible(true);
 	frame.setResizable(false);
