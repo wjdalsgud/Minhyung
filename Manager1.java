@@ -34,7 +34,6 @@ public class Manager1 extends JFrame{
     String result1="";
     int i=0;
 	Manager1(){
-		
 		try {
 			
 			ta= new JTextArea("\t   회원정보\n",35,35);
@@ -71,6 +70,7 @@ public class Manager1 extends JFrame{
             }
             
         }
+		
 		setTitle("회원관리");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		c=getContentPane();
