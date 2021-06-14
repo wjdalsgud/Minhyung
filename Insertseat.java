@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-public class aa1 {
+public class Insertseat {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
