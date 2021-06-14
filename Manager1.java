@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class Manage1 extends JFrame{
+public class Manager1 extends JFrame{
 	Container c;
 	JTextArea ta;
 	JButton s;
@@ -33,7 +33,7 @@ public class Manage1 extends JFrame{
     String result[] = new String[1000];
     String result1="";
     int i=0;
-	Manage1(){
+	Manager1(){
 		
 		try {
 			
