@@ -28,7 +28,7 @@ public class Login extends JFrame {
 	static int pctotal=0;
 	Login() {
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Wallpaper.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Wallpaper.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("로그인");
 		
