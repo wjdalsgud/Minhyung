@@ -18,7 +18,7 @@ public class ManagerSet extends JFrame{
 
 	ManagerSet(){
 		JFrame frame = new JFrame();
-		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/82105/eclipse-workspace/dbj/image/Clock.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Clock.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("예약확인화면");
 
