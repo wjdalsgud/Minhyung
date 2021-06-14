@@ -25,7 +25,7 @@ public class NewManager extends JFrame {
 	NewManager() {
 		JFrame frame = new JFrame();
 
-		ImagePanel Background= new ImagePanel(new ImageIcon("./image/Clock.jpg").getImage());
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/paint4.jpg").getImage());
 		frame.getContentPane().add(Background,BorderLayout.NORTH);
 		frame.setTitle("회원정보수정");
 
@@ -33,35 +33,35 @@ public class NewManager extends JFrame {
 
 		JLabel MainLabel = new JLabel(" 회원 정보 수정");
 		MainLabel.setLayout(null);
-		MainLabel.setBounds(66, 10, 173, 27);
+		MainLabel.setBounds(103, 10, 128, 53);
 		Background.add(MainLabel);
 
 
 		JLabel pass = new JLabel("비밀번호");
 		pass.setLayout(null);
-		pass.setBounds(41, 139, 83, 15);
+		pass.setBounds(54, 65, 81, 41);
 		Background.add(pass);
 
 		JLabel phone = new JLabel("전화번호");
 		phone.setLayout(null);
-		phone.setBounds(41, 173, 67, 15);
+		phone.setBounds(48, 116, 87, 41);
 		Background.add(phone);
 
 		JPasswordField  pass_txt = new JPasswordField();
 		pass_txt.setLayout(null);
-		pass_txt.setBounds(93, 136, 96, 21);
+		pass_txt.setBounds(113, 75, 96, 21);
 		Background.add(pass_txt);
 		pass_txt.setColumns(10);
 
 		JTextField phone_txt = new JTextField();
 		phone_txt.setLayout(null);
-		phone_txt.setBounds(93, 167, 96, 21);
+		phone_txt.setBounds(113, 126, 96, 21);
 		Background.add(phone_txt);
 		phone_txt.setColumns(10);
 
 		JButton Back_btn = new JButton("뒤로가기");
 		 Back_btn.setLayout(null);
-		 Back_btn.setBounds(12, 210, 112, 43);
+		 Back_btn.setBounds(24, 184, 111, 53);
 		 Background.add(Back_btn);
 		 Back_btn.addActionListener(new ActionListener() {
 
@@ -77,7 +77,7 @@ public class NewManager extends JFrame {
 
 		 JButton Sing_up =new JButton("회원수정");
 			Sing_up.setLayout(null);
-			Sing_up.setBounds(144, 210, 112, 43);
+			Sing_up.setBounds(163, 184, 111, 53);
 			Background.add(Sing_up);
 			Sing_up.addActionListener(new ActionListener() {
 
