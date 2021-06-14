@@ -14,6 +14,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Reservation1 extends JFrame{
@@ -59,6 +60,9 @@ JCheckBox did2 = null;
 			 bg.add(place[i]);
 			 c.add(place[i]);
 			 i++;
+			 if(i==Login.pctotal) {
+				 break;
+			 }
 		 }
 		 JButton b1=new JButton("뒤로가기");
 		 b1.addActionListener(new ActionListener(){
@@ -120,12 +124,13 @@ JCheckBox did2 = null;
 				        }			
 				}
 			 });
-			
 		 JPanel a= new JPanel();
 		 a.setLayout(new FlowLayout(FlowLayout.CENTER,70,40));
 		 a.add(b1);
 		 a.add(b2);
-		 c.add(a);
+		 JScrollPane jsp = new JScrollPane(a);
+		 jsp.setBounds(200,200,200,200);  
+		 c.add(jsp);
 
 		setVisible(true);
 		setSize(2400,2400);
