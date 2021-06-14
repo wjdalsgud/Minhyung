@@ -1,7 +1,9 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -9,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,37 +23,70 @@ import javax.swing.JTextField;
 public class Manager2 extends JFrame{
 
 	Manager2(){
+		JFrame frame = new JFrame();
+		ImagePanel Background= new ImagePanel(new ImageIcon("C:/Users/pc/eclipse-workspace/PC Reservation ManageMent Program/image/Blue.jpg").getImage());
+		frame.getContentPane().add(Background,BorderLayout.NORTH);
+		frame.setTitle("회원 삭제");
+		
+		Background.setLayout(null);
+	
+		JLabel Main = new JLabel("회원 삭제");
+		Main.setLayout(null);
+		Main.setBounds(94, 10, 105, 35);
+		Main.setFont(new Font("HT수평선M",Font.BOLD,13));
+		Main.setForeground(Color.BLACK);
+		Background.add(Main);
+		
+		JLabel a = new JLabel("삭제할 회원 아이디를 입력해주세요");
+		a.setLayout(null);
+		a.setForeground(Color.BLACK);
+		a.setBounds(31, 41, 225, 35);
+		Background.add(a);
+		
+		JLabel ID = new JLabel("ID");
+		ID.setLayout(null);
+		ID.setForeground(Color.BLACK);
+		ID.setBounds(12, 70, 79, 35);
+		Background.add(ID);
+		
+		JTextField ab = new JTextField();
+		ab.setLayout(null);
+		ab.setBounds(41, 77, 164, 21);
+		Background.add(ab);
+		ab.setColumns(15);
+		
+		JButton b = new JButton("뒤로가기");
+		b.setLayout(null);
+		b.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b.setBackground(Color.LIGHT_GRAY);
+		b.setForeground(Color.BLUE);
+		b.setBounds(31, 115, 105, 35);
+		Background.add(b);
+		b.addActionListener(new ActionListener() {
 
-		Container c= getContentPane();
-		setTitle("회원 삭제");
-		JPanel a= new JPanel();
-		JPanel a1= new JPanel();
-		JPanel a2= new JPanel();
-		JPanel a3= new JPanel();
-		a.setLayout(new FlowLayout());
-		a1.setLayout(new FlowLayout());
-		a2.setLayout(new FlowLayout());
-		a3.setLayout(new FlowLayout());
-		JLabel ab=new JLabel("               회원 삭제            ");
-		JLabel ab1=new JLabel("삭제할 회원 아이디를 입력해주세요");
-		JLabel ab2= new JLabel("ID");
-		JTextField abc= new JTextField(15);
-		JButton abcd= new JButton("뒤로가기");
-		 abcd.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					new ManagerMain();	
-			}
-		 });
-		JButton abcd1=new JButton("아이디 삭제");
-		abcd1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		abcd1.setBackground(Color.LIGHT_GRAY);
-		abcd1.setForeground(Color.blue);
-		abcd1.addActionListener(new ActionListener(){
+			@Override
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				new ManagerMain();
+				
+			}
+			
+		});
+		
+		
+		JButton delete = new JButton("아이디 삭제");
+		delete.setLayout(null);
+		delete.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		delete.setBackground(Color.LIGHT_GRAY);
+		delete.setForeground(Color.BLUE);
+		delete.setBounds(149, 115, 105, 35);
+		Background.add(delete);
+		delete.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				String id;
-				id=abc.getText();
+				id=ab.getText();
 				Connection conn = null; // DB연결된 상태(세션)을 담은 객체
 			    PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
 			    PreparedStatement spstm=null;
@@ -71,7 +108,7 @@ public class Manager2 extends JFrame{
 		    		dphone= rs.getString("PHONE");
 		    		if(did.equals(id)) {
 		    		
-		    			setVisible(false);
+		    			frame.setVisible(false);
 						new Newdelete();
 		    			
 		    			break;
@@ -97,20 +134,20 @@ public class Manager2 extends JFrame{
 		            }
 		            
 		        }
+				
+			}
+			
+		});
+		
+		frame.setSize(300,200);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+		
+		
 		}
-	 });
-		c.setLayout(new FlowLayout());
-		a.add(ab);
-		a1.add(ab1);
-		a2.add(ab2);
-		a2.add(abc);
-		a3.add(abcd);
-		a3.add(abcd1);
-		c.add(a);
-		c.add(a1);
-		c.add(a2);
-		c.add(a3);
-		setSize(300,200);
-		setVisible(true);
-	}	
-}
+	}
